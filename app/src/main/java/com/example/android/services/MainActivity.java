@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TO DO 1 Add code to start service
+                Intent startServiceIntent = new Intent(getApplicationContext(), Startservice.class);
+                startService(startServiceIntent);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
