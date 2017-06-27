@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TO DO 2 Add code to bind service
+                Intent bindServiceIntent = new Intent(getApplicationContext(), Bindservice.class);
+                Intent startServiceIntent = new Intent(getApplicationContext(), Startservice.class);
+                bindService(bindServiceIntent, connection, Context.BIND_AUTO_CREATE);
+                startService(startServiceIntent);
             }
         });
         connection = new ServiceConnection() {
@@ -41,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 // TO DO 3 Add code
                 // - Get the service object from the binder object
                 // - Call the "access" method in Bindservice with the string "Service connected"
+                String data = "Service connected";
+                binder.getService().access(data);
             }
 
             @Override

@@ -17,6 +17,17 @@
         android:text="Start Service"
         android:textColor="@android:color/background_light"
         android:textSize="18sp" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="168dp"
+        android:background="@drawable/back"
+        android:text="Stop Service"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/button2"
@@ -27,6 +38,18 @@
         android:layout_marginBottom="138dp"
         android:background="@drawable/back"
         android:text="Bind Service"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button"
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/back"
+        android:text="Unbind Service"
         android:textColor="@android:color/background_light"
         android:textSize="18sp" />
 

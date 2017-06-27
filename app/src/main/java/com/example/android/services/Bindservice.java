@@ -46,6 +46,9 @@ public class Bindservice extends Service {
         compat.setContentTitle("Bind_service");
         compat.setContentText("Binded Service");
         // TO DO 4 Add code to send notification with code defined above
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(
+                NOTIFICATION_SERVICE);
+        mNotificationManager.notify(NOTIF_CODE, compat.build());
         return binder;
     }
 
@@ -57,7 +60,7 @@ public class Bindservice extends Service {
 
     public void access(String data)
     {
-        Toast.makeText(getApplicationContext(),"Bindservice: " + data,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplication().getApplicationContext(),"Bindservice: " + data,Toast.LENGTH_SHORT).show();
     }
     public class MyBinder extends Binder
     {
