@@ -31,8 +31,8 @@ public class Startservice extends Service {
         compat.setContentTitle("Start_Service");
         compat.setContentText("Service Running");
         // TO DO 5 Add code to send notification using NOTIF_CODE defined above
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(
-                NOTIFICATION_SERVICE);
+        NotificationManager mNotificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
         mNotificationManager.notify(NOTIF_CODE, compat.build());
         return super.onStartCommand(intent, flags, startId);
     }

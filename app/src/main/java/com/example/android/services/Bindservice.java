@@ -8,6 +8,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import static android.R.drawable.ic_dialog_alert;
@@ -46,21 +47,22 @@ public class Bindservice extends Service {
         compat.setContentTitle("Bind_service");
         compat.setContentText("Binded Service");
         // TO DO 4 Add code to send notification with code defined above
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(
-                NOTIFICATION_SERVICE);
+        NotificationManager mNotificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
         mNotificationManager.notify(NOTIF_CODE, compat.build());
         return binder;
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
+        Log.d("Serivices_99951", "I happened");
         Toast.makeText(getApplicationContext(),"Unbind Bindservice",Toast.LENGTH_SHORT).show();
         return super.onUnbind(intent);
     }
 
     public void access(String data)
     {
-        Toast.makeText(getApplication().getApplicationContext(),"Bindservice: " + data,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Bindservice: " + data,Toast.LENGTH_SHORT).show();
     }
     public class MyBinder extends Binder
     {
