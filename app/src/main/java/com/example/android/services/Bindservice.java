@@ -55,7 +55,6 @@ public class Bindservice extends Service {
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d("Serivices_99951", "I happened");
         Toast.makeText(getApplicationContext(),"Unbind Bindservice",Toast.LENGTH_SHORT).show();
         return super.onUnbind(intent);
     }
