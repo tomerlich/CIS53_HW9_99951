@@ -18,6 +18,7 @@ import static android.R.drawable.ic_dialog_alert;
 public class Bindservice extends Service {
     final int NOTIF_CODE = 1;
     MyBinder binder = new MyBinder();
+
     @Override
     public void onCreate() {
         Toast.makeText(getApplicationContext(),"Service created",Toast.LENGTH_SHORT).show();
@@ -60,12 +61,11 @@ public class Bindservice extends Service {
         return super.onUnbind(intent);
     }
 
-    public void access(String data)
-    {
+    public void access(String data) {
         Toast.makeText(getApplicationContext(),"Bindservice: " + data,Toast.LENGTH_SHORT).show();
     }
-    public class MyBinder extends Binder
-    {
+
+    public class MyBinder extends Binder {
         Bindservice getService()
         {
             return Bindservice.this;

@@ -46,8 +46,4 @@ public class Startservice extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
-    public int getNOTIF_CODE() {
-        return NOTIF_CODE;
-    }
 }

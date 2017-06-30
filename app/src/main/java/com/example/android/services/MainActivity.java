@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Bindservice.MyBinder binder;
     ServiceConnection connection;
     boolean bounded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //unbind service button
-                if(isBounded() == true) {
+                if(isBounded()) {
                     bounded = false;
                     unbindService(connection);
                 }
@@ -90,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-
     }
+
     public boolean isBounded(){
         return bounded;
     }
