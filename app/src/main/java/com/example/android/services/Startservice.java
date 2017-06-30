@@ -1,6 +1,5 @@
 package com.example.android.services;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
@@ -16,6 +15,7 @@ import static android.R.drawable.ic_dialog_alert;
  */
 
 public class Startservice extends Service {
+    public static final int NOTIF_CODE = 2;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -24,7 +24,6 @@ public class Startservice extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        final int NOTIF_CODE = 2;
         NotificationCompat.Builder compat = new NotificationCompat.Builder(getApplicationContext());
         compat.setAutoCancel(true);
         compat.setSmallIcon(ic_dialog_alert);
@@ -46,5 +45,9 @@ public class Startservice extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    public int getNOTIF_CODE() {
+        return NOTIF_CODE;
     }
 }

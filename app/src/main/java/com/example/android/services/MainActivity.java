@@ -1,5 +1,6 @@
 package com.example.android.services;
 
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     Bindservice bindservice1;
     Bindservice.MyBinder binder;
     ServiceConnection connection;
+    boolean bounded = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TO DO 2 Add code to bind service
+                bounded = true;
                 Intent Intent = new Intent(getApplicationContext(), Bindservice.class);
                 bindService(Intent, connection, Context.BIND_AUTO_CREATE);
             }
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 //stop service button
                 Intent Intent = new Intent(getApplicationContext(), Startservice.class);
                 stopService(Intent);
+                NotificationManager mNotificationManager = (NotificationManager)
+                        getSystemService(NOTIFICATION_SERVICE);
+                mNotificationManager.cancel(Startservice.NOTIF_CODE);
                 Toast.makeText(
                         getApplicationContext(),
                         "Startservice is stopped",
@@ -56,7 +62,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //unbind service button
-                unbindService(connection);
+                if(isBounded() == true) {
+                    bounded = false;
+                    unbindService(connection);
+                }
+                else
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "I cannot do this ... there is nothing to unbind",
+                            Toast.LENGTH_SHORT).show();
             }
         });
         connection = new ServiceConnection() {
@@ -77,5 +91,8 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+    }
+    public boolean isBounded(){
+        return bounded;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.android.services;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
@@ -8,7 +7,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
-import android.util.Log;
 import android.widget.Toast;
 
 import static android.R.drawable.ic_dialog_alert;
@@ -18,6 +16,7 @@ import static android.R.drawable.ic_dialog_alert;
  */
 
 public class Bindservice extends Service {
+    final int NOTIF_CODE = 1;
     MyBinder binder = new MyBinder();
     @Override
     public void onCreate() {
@@ -40,7 +39,6 @@ public class Bindservice extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        final int NOTIF_CODE = 1;
         NotificationCompat.Builder compat = new NotificationCompat.Builder(getApplicationContext());
         compat.setAutoCancel(false);
         compat.setSmallIcon(ic_dialog_alert);
@@ -56,6 +54,9 @@ public class Bindservice extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Toast.makeText(getApplicationContext(),"Unbind Bindservice",Toast.LENGTH_SHORT).show();
+        NotificationManager mNotificationManager = (NotificationManager)
+                getSystemService(NOTIFICATION_SERVICE);
+        mNotificationManager.cancel(NOTIF_CODE);
         return super.onUnbind(intent);
     }
 
